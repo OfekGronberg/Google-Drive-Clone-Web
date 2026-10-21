@@ -1,0 +1,29 @@
+{
+  "name": "advanced-programming-part3",
+  "version": "1.0.0",
+  "description": "Creates a Matchmaker object that is responsible for most of the arrangements. \r #### Matchmaker: ####\r Creates a Server.\r Accepts Clients and for each one creates:\r -- App\r -- Commands\r -- Validators\r Then starts a thread and waits for the next Client.\r #### Validators:  ####\r AddValidator, GetValidator, SearchValidator, DeleteValidator (all implement IValidator)\r #### Commands:  ####\r AddCommand, GetCommand, SearchCommand, DeleteCommand.  \r Each command gets a reference to the encoder and its validator.  \r A map<string, tuple<ICommand*, bool>> that connects command names (\"add\", \"get\", \"search\", \"delete\") to the corresponding ICommand objects and the requiresMuting boolean.  \r Builds an App object with the menu + command map + common mutex + default-output string.  \r Calls app.run().  \r #### App::run() – main loop ####  \r Runs forever in a while(true) loop.  \r #### On each iteration:  ####\r Asks the menu for the next line of input:  \r string line = menu->nextCommand();  \r #### Splits the line into:  ####\r cmd → the first word (e.g. \"add\")  \r <br>args → the rest of the line (e.g. \"file1 some text\")  \r #### Looks up cmd in the commands map:  ####\r If command does not exist → input is ignored (no output).  \r Calls command->execute(args) on the matching ICommand.  \r Takes the returned string result and passes it to the menu:  \r menu->printOutput(result);  \r Then the loop repeats and waits for the next user input.  \r #### Each command validates + executes its logic  ####\r At the start of every execute():  \r The command calls its validator:  \r auto* parsed = validator.validate(args);  \r If the validator returns nullptr → the input is invalid → the command returns an appropriate string and does nothing.  \r If the validator returns a non-null pointer → input is valid, and the command continues with its logic (and frees the parsed list when done).\r #### Add Command (`add <filename> <text>`)  ####\r ➤ Validates that both a filename and text are provided.  \r ➤ Compresses the text using RLE encoding.  \r ➤ Saves the encoded content into a file under the files directory.  \r #### Get Command (`get <filename>`)  ####\r ➤ Validates that a single filename is provided.  \r ➤ Reads the encoded content of the file and decodes it using RLE.  \r ➤ Returns the original (decoded) text to the user.  \r #### Search Command (`search <text>`)  ####\r ➤ Validates that a search term is provided. \r ➤ Scans all the files' names to find a match. \r ➤ Scans all files using an advanced algorithm that checks the compressed (encoded) data without decoding each file.  \r ➤ Returns a list of filenames that contain the given search term.  \r #### Result goes back to the user  ####\r Whatever execute() returns is printed by the menu (unless it’s empty, in which case nothing is shown).  \r Then the app goes back to waiting for the next command.  \r #### Delete Command (`search <text>`)  ####\r ➤ Validates the arguments;\r ➤ Checks whether such a file exists.\r ➤ I does - removes and returns 204, else - returns 404.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OfekGronberg/Advanced-Programming-Part3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/OfekGronberg/Advanced-Programming-Part3/issues"
+  },
+  "homepage": "https://github.com/OfekGronberg/Advanced-Programming-Part3#readme",
+  "dependencies": {
+    "create-react-app": "^5.1.0",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3"
+  }
+}

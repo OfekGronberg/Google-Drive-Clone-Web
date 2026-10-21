@@ -1,0 +1,220 @@
+.files {
+  position: relative;
+}
+
+.filesTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* Keep title from pushing layout weirdly */
+.filesTitle {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Right-side actions */
+.filesActions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+
+.filesRefresh {
+  cursor: pointer;
+}
+
+.filesList {
+  margin-top: 12px;
+  display: grid;
+  gap: 8px;
+}
+
+.filesRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: var(--surface-color);
+  cursor: default;
+  text-align: left;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* Ensure file/folder text uses theme text color */
+.filesRow,
+.filesRow * {
+  color: var(--text-color);
+}
+
+.filesRow.isSelected {
+  background: var(--hover-bg);
+  border: 1px solid var(--accent);
+}
+
+.filesLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filesIcon {
+  font-size: 18px;
+}
+
+.filesName {
+  font-weight: 400;
+  color: var(--text-color);
+}
+
+.filesMeta {
+  font-size: 12px;
+  color: var(--text-color);
+  opacity: 0.75;
+}
+
+.filesMenu {
+  position: fixed;
+  right: 18px;
+  bottom: 86px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  min-width: 180px;
+  z-index: 1000;
+}
+
+.filesMenuItem {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.filesMenuItem:hover {
+  background: var(--hover-bg);
+}
+
+.filesFab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--border-color);
+  background: var(--surface-color);
+  color: var(--text-color);
+  font-size: 34px;
+  line-height: 0;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 1001;
+}
+
+.filesTop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filesTitle {
+  margin: 0;
+}
+
+/* Star button like Edit page star */
+.filesStar {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: var(--placeholder-color);
+}
+
+.filesStar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.filesStar.isStarred {
+  color: #f5c518;
+}
+
+/* Refresh button consistent with the UI */
+.filesRefresh {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--surface-color);
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--text-color);
+}
+
+.filesRefresh:hover {
+  background: var(--hover-bg);
+}
+
+/* Right-click context menu */
+.filesCtxMenu {
+  position: fixed;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+  min-width: 180px;
+  z-index: 2000;
+}
+
+.filesCtxItem {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 15px;
+}
+
+.filesCtxItem:hover {
+  background: #eef2f7;
+}
+
+/* Grey "Rename" */
+.filesCtxItemRename {
+  color: #111827; /* neutral dark */
+}
+
+/* Red "Delete" */
+.filesCtxItemDelete {
+  color: #ef4444;
+}
+
+.filesCtxItemPermissions {
+  color: #111827; /* neutral dark */
+}

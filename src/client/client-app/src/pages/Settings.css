@@ -1,0 +1,389 @@
+/* =========================
+   Settings Page (base)
+   ========================= */
+
+.settings-container {
+  padding: 24px;
+  max-width: 600px;
+  color: var(--text-color);
+}
+
+.settings-container h1 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+/* Alerts */
+.alert {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.alert-error {
+  background-color: #ffebee;
+  color: #c62828;
+  border-left: 4px solid #c62828;
+}
+
+.alert-success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  border-left: 4px solid #2e7d32;
+}
+
+/* Form layout */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  background: var(--input-bg, var(--surface-color));
+  color: var(--input-text, var(--text-color));
+}
+
+.form-group input::placeholder {
+  color: var(--placeholder-color, rgba(0, 0, 0, 0.45));
+}
+
+/* Theme-aware focus */
+.form-group input[type="text"]:focus,
+.form-group input[type="password"]:focus {
+  outline: none;
+  border-color: var(--focus-border, #1976d2);
+  box-shadow: 0 0 0 2px var(--focus-glow, rgba(25, 118, 210, 0.1));
+}
+
+.form-group small {
+  font-size: 12px;
+  color: var(--help-text, #666);
+}
+
+/* Image preview */
+.image-preview {
+  margin-top: 12px;
+  max-width: 120px;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 120px;
+  border-radius: 6px;
+  object-fit: cover;
+  border: 1px solid var(--border-color);
+}
+
+/* Theme buttons */
+.theme-options {
+  display: flex;
+  gap: 12px;
+}
+
+.theme-btn {
+  flex: 1;
+  padding: 12px 16px;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--surface-color);
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 0.2s;
+  color: var(--text-color);
+}
+
+/* Password input wrapper: keep toggle inside the input */
+.password-wrapper {
+  position: relative;
+  display: block;
+}
+
+.password-wrapper .password-input {
+  padding: 10px 44px 10px 12px; /* make space for the toggle on right */
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  /* ensure password input follows theme variables - force with !important to override autofill */
+  background: var(--input-bg, var(--surface-color)) !important;
+  color: var(--input-text, var(--text-color)) !important;
+}
+
+.password-wrapper .pw-toggle {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.password-wrapper .pw-toggle:focus {
+  outline: 2px solid rgba(25, 118, 210, 0.2);
+  border-radius: 4px;
+}
+
+/* Autofill override for password input */
+.password-wrapper .password-input:-webkit-autofill,
+.password-wrapper .password-input:-webkit-autofill:hover,
+.password-wrapper .password-input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  -webkit-text-fill-color: var(--input-text, var(--text-color)) !important;
+}
+
+/* Firefox autofill */
+.password-wrapper .password-input:-moz-autofill {
+  box-shadow: 0 0 0px 1000px var(--input-bg) inset !important;
+  -moz-text-fill-color: var(--input-text, var(--text-color)) !important;
+}
+
+.theme-btn:hover {
+  border-color: var(--accent, #1976d2);
+  background: var(--hover-bg, rgba(0, 0, 0, 0.04));
+}
+
+.theme-btn.active {
+  border-color: var(--accent, #1976d2);
+  background: var(--active-bg, #e3f2fd);
+  color: var(--accent, #1976d2);
+}
+
+/* Save button (default) */
+.btn-primary {
+  padding: 12px 24px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.08s;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: #1565c0;
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* =========================
+   🏀 BBALL THEME OVERRIDES
+   (Card + Inputs + Button)
+   ========================= */
+
+:root.theme-bball .settings-form {
+  padding: 22px;
+  border-radius: 16px;
+
+  background: rgba(0, 0, 0, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.40),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.25);
+
+  backdrop-filter: blur(8px);
+}
+
+:root.theme-bball .settings-container h1 {
+  font-size: 44px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+}
+
+:root.theme-bball .form-group input[type="text"],
+:root.theme-bball .form-group input[type="password"],
+:root.theme-bball .password-wrapper .password-input {
+  border-radius: 10px;
+  border: none;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.25);
+  background: var(--input-bg) !important;
+  color: var(--input-text) !important;
+}
+
+:root.theme-bball .btn-primary {
+  background: var(--accent-2, #ffb020);
+  color: #111;
+}
+
+:root.theme-bball .btn-primary:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+/* =========================
+   🏀 RIGHT SIDE GRAPHIC (Settings)
+   )   |  8  |   (
+   - lines full height
+   - whole block centered vertically
+   - 8 centered between lines & vertically
+   ========================= */
+
+:root.theme-bball {
+  /* Right graphic box placement */
+  --gfx-right: 10px;      /* distance from right edge */
+  --gfx-w: 520px;          /* width of the whole graphic area */
+  --gfx-h: 560px;          /* overall height reference */
+
+  /* Styling */
+  --line-w: 4px;
+  --line: rgba(255, 255, 255, 0.28);
+
+  /* Middle lines spacing */
+  --mid-gap: 140px;        /* distance between the 2 vertical lines */
+
+  /* Curves */
+  --curve-size: 520px;     /* circle diameter used to form parentheses */
+  --curve-stroke: 4px;     /* curve thickness */
+
+  /* Number */
+  --num-size: 220px;
+  --num-color: rgba(255,255,255,0.08);
+}
+
+/* Ensure container can be a reference if needed */
+:root.theme-bball .settings-container {
+  position: relative;
+}
+
+/* Keep settings UI above the decoration */
+:root.theme-bball .settings-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ===== 2 vertical lines (top-to-bottom) ===== */
+:root.theme-bball .settings-container::before {
+  content: "";
+  position: fixed;
+
+  /* center the whole block vertically */
+  top: 50%;
+  transform: translateY(-50%);
+
+  right: var(--gfx-right);
+  width: var(--gfx-w);
+  height: var(--gfx-h);
+
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    /* left vertical line */
+    linear-gradient(var(--line), var(--line))
+      calc(50% - (var(--mid-gap) / 2) - (var(--line-w) / 2)) 0 /
+      var(--line-w) 100% no-repeat,
+
+    /* right vertical line */
+    linear-gradient(var(--line), var(--line))
+      calc(50% + (var(--mid-gap) / 2) - (var(--line-w) / 2)) 0 /
+      var(--line-w) 100% no-repeat;
+}
+
+/* ===== 2 parenthesis curves as OUTLINE ONLY =====
+   Trick: draw 2 outlined circles, but position them so only the
+   inside arc appears inside our gfx box.
+*/
+:root.theme-bball .settings-container::after {
+  content: "";
+  position: fixed;
+
+  /* center the whole block vertically */
+  top: 50%;
+  transform: translateY(-50%);
+
+  right: var(--gfx-right);
+  width: var(--gfx-w);
+  height: var(--gfx-h);
+
+  pointer-events: none;
+  z-index: 0;
+
+  background:
+    /* LEFT curve: ")"  (circle sits to the LEFT of the gfx box) */
+    radial-gradient(circle,
+      transparent calc(50% - var(--curve-stroke)),
+      var(--line) calc(50% - var(--curve-stroke)),
+      var(--line) 50%,
+      transparent 51%
+    )
+    /* move the circle left so only inner arc shows */
+    calc(0% - (var(--curve-size) * 0.62)) 50% /
+    var(--curve-size) var(--curve-size) no-repeat,
+
+    /* RIGHT curve: "(" (circle sits to the RIGHT of the gfx box) */
+    radial-gradient(circle,
+      transparent calc(50% - var(--curve-stroke)),
+      var(--line) calc(50% - var(--curve-stroke)),
+      var(--line) 50%,
+      transparent 51%
+    )
+    /* move the circle right so only inner arc shows */
+    calc(100% + (var(--curve-size) * 0.12)) 50% /
+    var(--curve-size) var(--curve-size) no-repeat;
+}
+
+/* ===== Jersey number 8 (exact center between lines & vertical center) =====
+   Put it on body so it doesn't get overwritten by ::before/::after above.
+*/
+:root.theme-bball body::after {
+  content: "8";
+  position: fixed;
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* align with the same gfx box */
+  right: calc(var(--gfx-right) + (var(--gfx-w) / 2) - (var(--num-size) / 4));
+
+  font-size: var(--num-size);
+  font-weight: 900;
+  letter-spacing: -6px;
+
+  color: var(--num-color);
+  text-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}

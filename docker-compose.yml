@@ -1,0 +1,52 @@
+# Docker Compose - Complete Application Stack
+# Runs: C++ FMS Server + Node.js Web API + React Client
+# 
+# Usage:
+#   docker-compose up -d --build
+#   docker-compose down
+
+services:
+  # C++ File Management Server
+  cpp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    working_dir: /usr/src/mytest/build
+    command: ["./main", "5555"]
+    environment:
+      - FILES_DIR=/usr/src/mytest/files
+    volumes:
+      - ./files:/usr/src/mytest/files
+    expose:
+      - "5555"
+
+  # Node.js Web API Server
+  web-api:
+    build:
+      context: ./src/web
+      dockerfile: Dockerfile
+    environment:
+      - PORT=3000
+      - EX2_HOST=cpp-server
+      - EX2_PORT=5555
+    depends_on:
+      - cpp-server
+    ports:
+      - "3000:3000"
+
+  # React Client Application
+  client:
+    image: node:18
+    working_dir: /usr/src/app
+    volumes:
+      - ./src/client/client-app:/usr/src/app
+    command: ["sh", "-c", "npm install && PORT=3001 HOST=0.0.0.0 npm start"]
+    environment:
+      - PORT=3001
+      - HOST=0.0.0.0
+      - REACT_APP_API_BASE=http://localhost:3000
+    depends_on:
+      - web-api
+    ports:
+      - "3001:3001"
+

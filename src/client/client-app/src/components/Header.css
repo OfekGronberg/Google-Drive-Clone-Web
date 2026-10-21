@@ -1,0 +1,172 @@
+.appHeader {
+  height: 72px;
+  width: 100%;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: none;
+  background: var(--surface-color);
+}
+
+.appHeaderCenter {
+  position: absolute !important;
+  left: 50% !important;
+  top: 45% !important;
+  transform: translate(-50%, -50%) !important;
+  width: min(520px, calc(100% - 140px));
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  overflow: hidden;
+  background: var(--input-bg);
+}
+
+.searchInput {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  background: transparent; /* use parent bg */
+  color: var(--input-text);
+}
+
+.searchBtn {
+  border: none;
+  background: transparent;
+  padding: 10px 14px;
+  cursor: pointer;
+  border-left: 1px solid var(--border-color);
+  font-size: 16px;
+  color: var(--input-text);
+}
+
+/* Right side container must anchor the dropdown (prevents icon moving) */
+.appHeaderRight {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  position: relative; /* anchor for absolute dropdown */
+}
+
+/* Keep icon stable */
+.profileBtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.profileImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder avatar when no image is set */
+.profileImgPlaceholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--input-text);
+}
+
+/* Dropdown menu styled like the "+" menu */
+.profileMenu {
+  position: absolute;           /* overlays, doesn't push icon */
+  right: 0;
+  top: calc(100% + 8px);
+
+  width: 200px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  padding: 6px;
+
+  z-index: 2000;
+}
+
+/* Top enlarged icon area */
+.profileMenuTop {
+  display: grid;
+  place-items: center;
+  padding: 10px 0 6px 0;
+}
+
+.profileMenuImg {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  border: 1px solid var(--border-color);
+}
+
+/* Placeholder avatar in menu when no image is set */
+.profileMenuImgPlaceholder {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--input-bg);
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--input-text);
+}
+
+/* User ID text under avatar */
+.profileMenuUserId {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+  opacity: 0.9;
+}
+
+/* Menu items: same “flat button” style + hover like the + menu */
+.profileMenuItem {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--text-color);
+}
+
+.profileMenuItem:hover {
+  background: var(--hover-bg);
+}
+
+.profileMenuItemLogout {
+  color: var(--text-color);
+}
+
+.profileMenuDivider {
+  height: 1px;
+  background: var(--border-color);
+  margin: 6px 8px;
+}

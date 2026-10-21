@@ -1,0 +1,176 @@
+.permModalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.permModalPanel {
+  width: 380px;
+  max-width: 100%;
+  height: 100%;
+  background: var(--surface);
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+}
+
+.permModalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.permModalTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.permModalSubtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--help-text);
+}
+
+.permModalFileId {
+  font-family: monospace;
+}
+
+.permModalClose {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.permModalBody {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.permModalAddRow {
+  display: flex;
+  gap: 8px;
+}
+
+.permModalInput {
+  flex: 1;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+}
+
+.permModalSelect {
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+}
+
+.permModalAddButton {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #1a73e8;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.permModalAddButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.permModalError {
+  color: #ff6b6b;
+  font-size: 13px;
+  padding: 8px;
+  background-color: rgba(217, 48, 37, 0.15);
+  border-radius: 4px;
+  border-left: 3px solid #d93025;
+}
+
+.permModalReadOnlyNotice {
+  padding: 8px;
+  background-color: rgba(76, 175, 80, 0.15);
+  border-radius: 4px;
+  font-size: 13px;
+  color: #81c784;
+  border-left: 3px solid #4caf50;
+}
+
+.permModalList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.permModalEmpty {
+  font-size: 13px;
+  color: var(--help-text);
+}
+
+.permModalItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
+  border-top: 1px solid var(--border);
+}
+
+.permModalUser {
+  flex: 1;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+}
+
+.permModalRemoveButton {
+  padding: 6px 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #d93025;
+  color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.permModalRemoveButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.permModalSelect:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Basketball theme override - solid red background instead of transparent */
+:root.theme-bball .permModalPanel {
+  background: #b01616;
+}
+
+:root.theme-bball .permModalInput,
+:root.theme-bball .permModalSelect {
+  background-color: rgba(255, 255, 255, 0.9);
+}
